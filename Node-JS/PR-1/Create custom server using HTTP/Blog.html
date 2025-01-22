@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog</title>
+</head>
+<style>
+  @import url(https://use.fontawesome.com/releases/v5.0.6/css/all.css);
+
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #bbb;
+  }
+
+  .container {
+    display: flex;
+
+    width: 80vw;
+    height: 60vh;
+  }
+
+  i {
+    padding: 10px;
+    margin: 5px;
+    background: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  i:active,
+  i:hover {
+    background: #bbb;
+  }
+
+  img {
+    max-width: 40%;
+    padding: 20px;
+  }
+
+  .binderleft {
+    background: #000;
+    flex: 0 1 15px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+  }
+
+  .binderright {
+    background: #000;
+    flex: 0 1 15px;
+    order: 1;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .box {
+
+    background: #eee;
+    text-align: center;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    flex: 1 1 1px;
+
+  }
+
+  .box p {
+    margin: 10px;
+  }
+
+  .hide {
+    flex: 0 0 1px;
+
+    transition: flex-grow .7s linear;
+  }
+
+  .hide>.whitebox {
+    display: none;
+
+  }
+
+  .show {
+    display: flex;
+    flex: 1 1 100%;
+
+    transition: flex-basis .7s linear;
+
+  }
+
+
+  .whitebox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .attrib {
+    text-align: right;
+    display: block;
+    padding-top: 5px;
+  }
+
+  .site-navigation {
+    background-color: #191414c8;
+    width: 100%;
+  }
+
+  .site-navigation ul,
+  .site-navigation li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+    justify-content: center;
+  }
+
+  .site-navigation li {
+    display: inline-block;
+    margin: 1.4em 1em 1em 1em;
+
+  }
+
+  .site-navigation ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .site-navigation ul li a:hover {
+    background: #fff;
+    color: black;
+    padding: 15px;
+    border-radius: 5px;
+  }
+</style>
+
+<body>
+
+
+  <nav class="site-navigation">
+    <ul>
+      <li> <a href="/home">Home</a></li>
+      <li> <a href="/about">About</a></li>
+      <li> <a href="/pages">Pages</a></li>
+      <li> <a href="/blog">Blog</a></li>
+      <li> <a href="/contact">Contact</a></li>
+      <li> <a href="/services">Services</a></li>
+      <li> <a href="/shop">Shop</a></li>
+      <li> <a href="/works">Works</a></li>
+      <li> <a href="/faq">FAQ</a></li>
+      <li> <a href="/news">News</a></li>
+    </ul>
+  </nav>
+  <h1>Life is like an open book...</h1>
+
+  <div class="container">
+    <div class="binderleft">
+    </div>
+    <div class="box show">
+      <div class="whitebox">
+        <i class="fas fa-arrow-left"></i>
+        <img src="http://www.publicdomainpictures.net/pictures/220000/velka/snow-capped-mountains.jpg">
+        <p><em>Life isn't about finding yourself. Life is about creating yourself.<br><span class="attrib">- George
+              Bernard Shaw</span></em></p>
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    </div>
+    <div class="box hide">
+      <div class="whitebox">
+        <i class="fas fa-arrow-left"></i>
+        <img src="http://ak3.picdn.net/shutterstock/videos/589993/thumb/1.jpg?i10c=img.resize(height:160)">
+        <p><em>Do not dwell in the past. Do not dream of the future. Concentrate the mind on the present
+            moment.<br><span class="attrib">- Buddha</span></em></p>
+        <i class="fas fa-arrow-right"></i>
+      </div>
+
+    </div>
+    <div class="box hide">
+      <div class="whitebox">
+        <i class="fas fa-arrow-left"></i>
+        <img src="https://kaggle2.blob.core.windows.net/competitions/kaggle/5408/media/bigleaves.jpg">
+        <p><em>Very little is needed to make a happy life; it is all within yourself, in your way of thinking.<br><span
+              class="attrib">- Marcus Aurelius</span></em></p>
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    </div>
+    <div class="box hide">
+      <div class="whitebox">
+        <i class="fas fa-arrow-left"></i>
+        <img src="http://www.publicdomainpictures.net/pictures/220000/velka/snow-capped-mountains.jpg">
+        <p><em>There are two great days in a person's life - the day we are born and the day we discover why.<br><span
+              class="attrib">- William Barclay</span></em></p>
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    </div>
+    <div class="box hide">
+      <div class="whitebox">
+        <i class="fas fa-arrow-left"></i>
+        <img src="https://kaggle2.blob.core.windows.net/competitions/kaggle/5408/media/bigleaves.jpg">
+        <p><em>A happy life is one spent in learning, earning, and yearning.<br><span class="attrib">- Lillian
+              Gish</span></em></p>
+        <i class="fas fa-arrow-right"></i>
+      </div>
+    </div>
+    <div class="binderright">
+    </div>
+  </div>
+
+
+
+</body>
+
+</body>
+
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  function nextPage(whichGroup, whichDirection) {
+    for (var i = 0; i < whichGroup.length; i++) {
+      if ($(whichGroup[i]).css("flex-basis") == "100%" && whichDirection == "next") {
+
+        console.log("You are here (next)");
+        thisDiv = $(whichGroup[i]);
+        if (i != whichGroup.length - 1) {
+          nextDiv = thisDiv.next();
+        } else {
+          return (false);
+        }
+        showDirection = "right";
+        hideDirection = "left";
+      }
+      if ($(whichGroup[i]).css("flex-basis") == "100%" && whichDirection == "prev") {
+        console.log("You are here (prev)");
+        thisDiv = $(whichGroup[i]);
+        if (i != 0) {
+          nextDiv = thisDiv.prev()
+        } else {
+          return (false);
+        }
+        showDirection = "left";
+        hideDirection = "right";
+      }
+    }
+
+    thisDiv.addClass("hide").delay(400).removeClass("show");
+    nextDiv.addClass("show").delay(400).removeClass("hide");
+  }
+
+  $('.fa-arrow-left').click(function () {
+    nextPage($('.box'), 'prev');
+  });
+  $('.fa-arrow-right').click(function () {
+    nextPage($('.box'), 'next');
+  });
+
+
+</script>

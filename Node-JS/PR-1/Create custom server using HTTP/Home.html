@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    ul,li{
+        list-style: none;
+    }
+
+    body {
+        background: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .nav_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #111;
+        padding: 20px 0;
+    }
+
+    .nav_container ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    .nav_container ul li {
+        margin: 0 15px;
+    }
+
+    .nav_container ul li a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 8px 20px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .nav_container ul li a:hover {
+        background-color: #f0f0f0;
+        color: #111;
+        transform: scale(1.1);
+    }
+
+    .main_container {
+        height: 100vh;
+        background: url('https://img.freepik.com/free-photo/monochromatic-urban-minimal-landscape_23-2151011613.jpg?t=st=1715336930~exp=1715340530~hmac=8bcb179cd0db052156855983e1484bdc421450a7e121d76ae49593804e214528&w=996') no-repeat center center;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .content {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 40px 60px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+    }
+
+    h2 {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        line-height: 1.8;
+    }
+
+    button {
+        font-size: 18px;
+        font-weight: 600;
+        color: #fff;
+        background-color: #007bff;
+        padding: 12px 30px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        transform: translateY(-5px);
+    }
+
+    @media (max-width: 768px) {
+        .nav_container ul li a {
+            font-size: 16px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        button {
+            font-size: 16px;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="nav_container">
+        <ul>
+            <li><a href="/home">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/pages">Pages</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/shop">Shop</a></li>
+            <li><a href="/works">Works</a></li>
+            <li><a href="/faq">FAQ</a></li>
+            <li><a href="/news">News</a></li>
+        </ul>
+    </div>
+
+    <section>
+        <div class="main_container">
+            <div class="content">
+                <h2>Welcome To My First Code</h2>
+                <p>Starting to program is like opening a door to a whole new world of creativity and problem-solving. CodePen is a fantastic platform for experimenting with code, sharing your projects, and learning from others. Let your creativity flow!</p>
+                <button>Let's Go!</button>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

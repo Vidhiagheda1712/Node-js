@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f8ff;
+            background-image: url("https://img.freepik.com/free-vector/white-abstract-background_23-2148810113.jpg");
+            
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            transition: all 0.3s ease;
+        }
+
+        .form-container:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="datetime-local"]:focus {
+            border-color: #4CAF50;
+            background-color: #fff;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-container p {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .form-container a {
+            display: inline-block;
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+
+        .view {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .view a {
+            padding: 12px 25px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 0 auto;
+            display: inline-block;
+        }
+
+        .view a:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+        }
+
+        .view a:focus {
+            outline: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 30px;
+            }
+
+            input[type="text"],
+            input[type="datetime-local"],
+            input[type="submit"] {
+                font-size: 15px;
+            }
+
+            .view a {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 22px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            input[type="text"],
+            input[type="datetime-local"],
+            input[type="submit"] {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .view a {
+                font-size: 14px;
+                padding: 12px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Edit Task</h2>
+        <form action="/updateuser" method="post">
+            <!-- Hidden Field for Task ID -->
+            <input type="hidden" name="editid" value="<%= single.id %>">
+
+            <label for="taskName">Task Name:</label>
+            <input type="text" id="taskName" name="usertask" placeholder="Enter task name" value="<%= single.task %>" required pattern="[A-Za-z ]+" title="Name must only contain letters and spaces">
+
+            <label for="status">Status:</label>
+            <input type="text" id="status" name="userstatus" placeholder="Enter status" value="<%= single.status %>" required pattern="[A-Za-z ]+" title="Name must only contain letters and spaces">
+
+            <label for="deadline">Deadline:</label>
+            <input type="datetime-local" id="deadline" name="deadline" value="<%= single.deadline %>" required>
+
+            <input type="submit" value="Update Task">
+        </form>
+
+        <div class="view">
+            <a href="/table">View Tasks</a>
+        </div>
+    </div>
+</body>
+
+</html>

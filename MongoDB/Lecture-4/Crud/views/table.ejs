@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <style>
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #e1f7d5;
+        }
+
+        a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 align="center">View User</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Gender</th>
+                <th>Hobby</th>
+                <th>City</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+      
+            <% allrecord.map((val, index) => { %>
+                <tr>
+                    <td><%= index + 1 %></td>
+                    <td><%= val?.username %></td>
+                    <td><%= val?.useremail %></td>
+                    <td><%= val?.userpassword %></td>
+                    <td><%= val?.gender %></td>
+                    <td><%= val?.hobby %></td>
+                    <td><%= val?.city %></td>
+                    <td>
+                        <a href="/deleteuser?did=<%= val?.id %>">Delete</a>
+                        <a href="/edituser?eid=<%= val?.id %>">Edit</a>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="/">Add User</a>
+    </div>
+</body>
+
+</html>

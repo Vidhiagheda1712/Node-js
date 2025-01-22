@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Works</title>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Mukta', sans-serif;
+      user-select: none;
+    }
+
+    body {
+      background-color: #D6EAF8;
+    }
+
+    .site-navigation {
+      background-color: #2a332d;
+      width: 100%;
+      padding-bottom: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .site-navigation ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    .site-navigation li {
+      margin: 0 1em;
+      list-style: none;
+    }
+
+    .site-navigation a {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .site-navigation a:hover {
+      background-color: #ff9900;
+      transform: translateY(-3px);
+    }
+
+    .container {
+      width: 100%;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+      background-image: url('https://cdn.pixabay.com/photo/2017/10/10/21/47/laptop-2838921_640.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #333;
+    }
+
+    .controls {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 55px 77px;
+      border-radius: 12px;
+      max-width: 50%;
+      margin: 0 auto;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    .controls h2 {
+      margin-bottom: 15px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: #ff9900;
+    }
+
+    button {
+      padding: 7px 74px;
+      background-color: #ff9900;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      font-size: 20px;
+    }
+
+    button:hover {
+      background-color: #ff7700;
+      transform: translateY(-3px);
+    }
+
+    .task {
+      margin-top: 30px;
+      max-width: 50%;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(8px);
+      overflow-y: auto;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      margin: 8px 0;
+      background-color: rgba(209, 219, 90, 0.15);
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    li:hover {
+      background-color: rgba(209, 219, 90, 0.35);
+    }
+
+    li.done {
+      background-color: rgba(68, 68, 64, 0.2);
+      text-decoration: line-through;
+      color: #888;
+    }
+
+    .removeBtn {
+      display: none;
+      color: #ff0000;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    li:hover .removeBtn {
+      display: block;
+    }
+
+    .social {
+      padding: 14px 10px;
+      border-radius: 10%;
+      margin: 11px 5px;
+      color: #000;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .social:hover {
+      color: #fff;
+      background-color: #000;
+    }
+
+    .social i {
+      font-size: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .controls {
+        width: 90%;
+      }
+
+      .task {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .controls {
+        width: 100%;
+      }
+
+      .task {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="site-navigation">
+    <ul>
+      <li><a href="/home">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/pages">Pages</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/shop">Shop</a></li>
+      <li><a href="/works">Works</a></li>
+      <li><a href="/faq">FAQ</a></li>
+      <li><a href="/news">News</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="controls">
+      <h2>To Do List</h2>
+      <div>
+        <a class="social" href="https://www.instagram.com/omid_kh_83/" target="_blank" title="Follow me on Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a class="social" href="https://t.me/o_kh_web" target="_blank" title="Follow me on Telegram">
+          <i class="fab fa-telegram"></i>
+        </a>
+        <a class="social" href="mailto:khanizade83@gmail.com" target="_blank" title="Send me an Email">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+      </div>
+      <input type="text" id="taskInput" placeholder="Your Work...">
+      <button id="addBtn" type="button">Add</button>
+    </div>
+
+    <div class="task">
+      <ul id="taskList"></ul>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/28157a8fdb.js" crossorigin="anonymous"></script>
+  <script>
+    const addBtn = document.getElementById("addBtn");
+    const taskInput = document.getElementById("taskInput");
+    const taskList = document.getElementById("taskList");
+    let tasks = JSON.parse(localStorage.getItem("todo")) || [];
+
+
+    function displayTasks() {
+      taskList.innerHTML = '';
+      tasks.forEach(task => {
+        const taskElement = createTaskElement(task);
+        taskList.appendChild(taskElement);
+      });
+    }
+
+
+    function createTaskElement(task) {
+      const li = document.createElement("li");
+      li.classList.toggle("done", task.done);
+      li.dataset.id = task.id;
+      li.innerHTML = `
+        ${task.text}
+        <span class="removeBtn" onclick="removeTask('${task.id}')">
+          <i class="fa-regular fa-trash-can"></i>
+        </span>
+      `;
+      li.addEventListener("click", () => toggleTaskDone(task.id));
+      return li;
+    }
+
+
+    addBtn.addEventListener("click", () => {
+      const taskText = taskInput.value.trim();
+      if (taskText) {
+        const newTask = {
+          id: Date.now().toString(),
+          text: taskText,
+          done: false
+        };
+        tasks.push(newTask);
+        saveTasks();
+        taskInput.value = '';
+        displayTasks();
+      }
+    });
+
+
+    function toggleTaskDone(taskId) {
+      const task = tasks.find(t => t.id === taskId);
+      task.done = !task.done;
+      saveTasks();
+      displayTasks();
+    }
+
+
+    function removeTask(taskId) {
+      tasks = tasks.filter(task => task.id !== taskId);
+      saveTasks();
+      displayTasks();
+    }
+
+
+    function saveTasks() {
+      localStorage.setItem("todo", JSON.stringify(tasks));
+    }
+
+
+    displayTasks();
+  </script>
+</body>
+
+</html>

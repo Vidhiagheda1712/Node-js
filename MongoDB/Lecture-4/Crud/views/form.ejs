@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 50px;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        td {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 80%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        a{
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            text-decoration: none;
+        }
+
+      a:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #777;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h2 align="center">Add User</h2>
+    <div class="container">
+        <form action="/adduser" method="post">
+            <table align="center" cellpadding="10" border="1">
+                <tr>
+                    <td>Name :-</td>
+                    <td><input type="text" name="name" required></td>
+                </tr>
+                <tr>
+                    <td>Email :-</td>
+                    <td><input type="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td>Password :-</td>
+                    <td><input type="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td>Gender :-</td>
+                    <td>
+                        <input type="radio" name="gender" value="Male" required> Male
+                        <input type="radio" name="gender" value="Female" required> Female
+                    </td>
+                </tr>
+                <tr>
+                    <td>Hobby :-</td>
+                    <td>
+                        <input type="checkbox" name="hobby" value="Cricket"> Cricket
+                        <input type="checkbox" name="hobby" value="Music"> Music
+                        <input type="checkbox" name="hobby" value="Travelling"> Travelling
+                    </td>
+                </tr>
+                <tr>
+                    <td>City :-</td>
+                    <td>
+                        <select name="city" required>
+                            <option value="">Select a city</option>
+                            <option value="Surat">Surat</option>
+                            <option value="Vadodara">Vadodara</option>
+                            <option value="Rajkot">Rajkot</option>
+                            <option value="Ahmedabad">Ahmedabad</option>
+                        </select>
+                    </td>
+                </tr>
+               
+            </table>
+            <div align="center">
+                <a href="/viewuser">View User</a>
+            </div>
+           
+        </form>
+
+     
+    </div>
+</body>
+
+</html>
