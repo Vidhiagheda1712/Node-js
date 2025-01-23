@@ -8,15 +8,31 @@ const path = require('path');
 
 app.set('view engine', 'ejs');
 
-const UserModel = require('./models/UserModel')
+const UserModel = require('./models/UserModel');
+const fs = require('fs');
+app.use('/uplodes', express.static(path.join(__dirname, 'uplodes')));
 app.use(express.urlencoded());
+const multer = require('multer');
+// file uplode start
+const stg = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uplodes')
+    },
+    filename: function (req, file, cb) {
+        const unique = Math.floor(Math.random() * 10000000);
+        cb(null, `${file.fieldname}-${unique}`);
+    }
+})
+
+const imguplode = multer({ storage: stg }).single('image');
+// file uplode end
 app.get('/', (req, res) => {
     return res.render('form')
 })
 
 
-app.post('/adduser', (req, res) => {
-    const { name, email, password, gender, hobby, city } = req.body;
+app.post('/adduser', imguplode, (req, res) => {
+    const { name, email, password, gender, hobby, city, } = req.body;
     UserModel.create({
         username: name,
         useremail: email,
@@ -24,6 +40,7 @@ app.post('/adduser', (req, res) => {
         gender: gender,
         hobby: hobby,
         city: city,
+        image: req.file?.path
     }).then((record) => {
         console.log("Record Create Successfully....");
         return res.redirect('/');
@@ -47,6 +64,15 @@ app.get('/viewuser', (req, res) => {
 })
 app.get('/deleteuser', (req, res) => {
     let id = req.query.did;
+    UserModel.findById(id)
+        .then((singlerow) => {
+            fs.unlinkSync(singlerow?.image)
+        }).catch((err) => {
+            console.log(err);
+            return false;
+        })
+
+
     UserModel.findByIdAndDelete(id)
         .then((data) => {
             console.log("Record Delete...");
@@ -57,7 +83,74 @@ app.get('/deleteuser', (req, res) => {
             return false;
         })
 
+});
+app.get('/edituser', (req, res) => {
+    let editid = req.query.eid;
+    UserModel.findById(editid)
+        .then((single) => {
+            return res.render('edit', {
+                single
+            });
+        }).catch((err) => {
+            console.log(err);
+            return false;
+
+        })
 })
+app.post('/updateuser', (req, res) => {
+    const { editid, name, email, password, gender, hobby, city } = req.body;
+    if (req.file) {
+        //old image remove
+        UserModel.findById(editid)
+            .then((singlerow) => {
+                fs.unlinkSync(singlerow?.image)
+                UserModel.findByIdAndUpdate(editid, {
+                    username: name,
+                    useremail: email,
+                    userpassword: password,
+                    gender: gender,
+                    hobby: hobby,
+                    city: city,
+                    image: req.file?.path
+                }).then((user) => {
+                    console.log(`user Update Successfully...`);
+                    return res.redirect('/viewuser');
+
+                }).catch((err) => {
+                    console.log(err);
+                    return false;
+
+                })
+
+            }).catch((err) => {
+                console.log(err);
+                return false;
+
+            })
+
+    } else {
+        UserModel.findById(editid)
+            .then((singlerow) => {
+                UserModel.findByIdAndUpdate(editid, {
+                    username: name,
+                    useremail: email,
+                    userpassword: password,
+                    gender: gender,
+                    hobby: hobby,
+                    city: city,
+                    image: req.file?.path
+                }).then((user) => {
+                    console.log(`user Update Successfully...`);
+                    return res.redirect('/viewuser');
+
+                }).catch((err) => {
+                    console.log(err);
+                    return false;
+
+                })
+            })
+    }
+});
 app.listen(port, (err) => {
     if (err) {
         console.log(err);

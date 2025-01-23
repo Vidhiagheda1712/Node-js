@@ -23,6 +23,10 @@ const userschema = mongoose.Schema({
     city: {
         type: String,
         required: true,
+    },
+    image:{
+        type: String,
+        required: true,
     }
 })
 const user = mongoose.model("user", userschema);

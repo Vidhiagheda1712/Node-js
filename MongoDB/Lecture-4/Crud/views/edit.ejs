@@ -19,7 +19,7 @@
         }
 
         .container {
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
             background-color: #fff;
             padding: 30px;
@@ -55,7 +55,7 @@
         input[type="password"],
         select {
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -74,13 +74,14 @@
         button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border: none;
             border-radius: 4px;
             font-size: 16px;
             cursor: pointer;
             width: 100%;
             margin-top: 20px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
@@ -90,52 +91,78 @@
         .footer {
             text-align: center;
             margin-top: 40px;
-            color: #777;
         }
 
-        a {
+        .footer a {
             color: #4CAF50;
             text-decoration: none;
+            font-size: 18px;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #4CAF50;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .footer a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
         }
     </style>
 </head>
 
 <body>
-    <h2 align="center">Add User</h2>
+    <h2 align="center">Edit User</h2>
     <div class="container">
-        <form action="/adduser" method="post" enctype="multipart/form-data">
+        <form action="/updateuser" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="editid" value="<%= single.id %>">
             <fieldset>
                 <legend>User Information</legend>
                 <table align="center" cellpadding="10">
                     <tr>
                         <td>Name:</td>
-                        <td><input type="text" name="name" required placeholder="Enter your name"></td>
+                        <td><input type="text" name="name" value="<%= single.username %>" required
+                                placeholder="Enter your name"></td>
                     </tr>
                     <tr>
                         <td>Email:</td>
-                        <td><input type="email" name="email" required placeholder="Enter your email"></td>
+                        <td><input type="email" name="email" value="<%= single.useremail %>" required
+                                placeholder="Enter your email"></td>
                     </tr>
                     <tr>
                         <td>Password:</td>
-                        <td><input type="password" name="password" required placeholder="Enter your password"></td>
+                        <td><input type="password" name="password" value="<%= single.userpassword %>" required
+                                placeholder="Enter your password"></td>
                     </tr>
                     <tr>
                         <td>Gender:</td>
-                        <td>
-                            <input type="radio" name="gender" value="Male" required> Male
-                            <input type="radio" name="gender" value="Female" required> Female
+                        <td class="radio-group">
+                            <input type="radio" name="gender" <% if(single?.gender==="Male" ) { %> checked <% } %>
+                                value="Male" required> Male
+                                <input type="radio" name="gender" <% if(single?.gender==="Female" ) { %> checked <% } %>
+                                    value="Female" required> Female
                         </td>
                     </tr>
                     <tr>
                         <td>Hobby:</td>
-                        <td>
-                            <input type="checkbox" name="hobby" value="Cricket"> Cricket
-                            <input type="checkbox" name="hobby" value="Music"> Music
-                            <input type="checkbox" name="hobby" value="Travelling"> Travelling
+                        <td class="checkbox-group">
+                            <input type="checkbox" name="hobby" <% if(single?.hobby.includes("Cricket")) { %> checked <%
+                                } %> value="Cricket"> Cricket
+                                <input type="checkbox" name="hobby" <% if(single?.hobby.includes("Music")) { %> checked
+                                <% } %> value="Music"> Music
+                                    <input type="checkbox" name="hobby" <% if(single?.hobby.includes("Travelling")) { %>
+                                    checked <% } %> value="Travelling"> Travelling
                         </td>
                     </tr>
                     <tr>
@@ -143,10 +170,14 @@
                         <td>
                             <select name="city" required>
                                 <option value="">Select a city</option>
-                                <option value="Surat">Surat</option>
-                                <option value="Vadodara">Vadodara</option>
-                                <option value="Rajkot">Rajkot</option>
-                                <option value="Ahmedabad">Ahmedabad</option>
+                                <option <% if(single?.city==="Surat" ) { %> selected <% } %> value="Surat">Surat
+                                </option>
+                                <option <% if(single?.city==="Vadodara" ) { %> selected <% } %>
+                                        value="Vadodara">Vadodara</option>
+                                <option <% if(single?.city==="Rajkot" ) { %> selected <% } %> value="Rajkot">Rajkot
+                                </option>
+                                <option <% if(single?.city==="Ahmedabad" ) { %> selected <% } %>
+                                        value="Ahmedabad">Ahmedabad</option>
                             </select>
                         </td>
                     </tr>
@@ -154,18 +185,18 @@
                         <td>File :</td>
                         <td>
                             <input type="file" name="image">
+                            <img src="<% single?.image %>" alt="" width="100">
                         </td>
                     </tr>
                 </table>
-                <button type="submit">Add User</button>
+                <button type="submit">Save Changes</button>
             </fieldset>
         </form>
-        <div align="center" style="margin-top: 20px;">
+
+        <div class="footer">
             <a href="/viewuser">View Users</a>
         </div>
     </div>
-
-   
 </body>
 
 </html>
