@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Store</title>
+</head>
+
+<style>
+    *,
+    *::before,
+    *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --primary-color: #8d5542;
+        --hover-color: #8d5542e9;
+        --border-color: #ddd;
+        --background-color: #f4f4f9;
+        --form-bg-color: rgba(255, 255, 255, 0.9);
+        --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        --input-padding: 12px;
+        --border-radius: 8px;
+        --font-size: 16px;
+        --input-width: 100%;
+        --text-color: #333;
+    }
+
+    body {
+        font-family: var(--font-family);
+        background: url('https://cdn.uniacco.com/blog/wp-content/uploads/2021/06/03160616/bookstore-slide-2MCD-superJumbo-min-1024x673.jpg') no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: var(--text-color);
+        overflow: hidden;
+    }
+
+    .form-container {
+        background-color: var(--form-bg-color);
+        padding: 40px;
+        border-radius: var(--border-radius);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+        margin: 20px;
+        position: relative;
+        z-index: 10;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 26px;
+        color: var(--primary-color);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        font-size: 14px;
+        color: var(--text-color);
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: var(--input-width);
+        padding: var(--input-padding);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius);
+        font-size: var(--font-size);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        background-color: #fff;
+    }
+
+    .form-group input[type="number"] {
+        width: var(--input-width);
+    }
+
+    .form-group textarea {
+        resize: vertical;
+        height: 120px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+    }
+
+    .form-group button {
+        width: var(--input-width);
+        padding: var(--input-padding);
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        font-size: var(--font-size);
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .form-group button:hover {
+        background-color: var(--hover-color);
+        transform: translateY(-2px);
+    }
+
+    .form-group button:active {
+        transform: translateY(1px);
+    }
+
+    .form-group a {
+        width: var(--input-width);
+        padding: var(--input-padding);
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        display: flex;
+        justify-content: center;
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        font-size: var(--font-size);
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .form-group a:hover {
+        background-color: var(--hover-color);
+        transform: translateY(-2px);
+    }
+
+    .form-group a:active {
+        transform: translateY(1px);
+    }
+
+    @media (max-width: 600px) {
+        .form-container {
+            padding: 25px;
+            width: 90%;
+        }
+
+        h1 {
+            font-size: 22px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group button {
+            font-size: 14px;
+        }
+    }
+</style>
+
+<body>
+    <div class="form-container">
+        <h1>Add Book</h1>
+        <form action="/addbook" method="post">
+
+            <div class="form-group">
+                <label for="bookname">Book Name:</label>
+                <input type="text" id="bookname" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea name="description" id="description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="author">Author Name:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+
+            <div class=" form-group">
+                <button type="submit">Submit</button>
+            </div>
+
+            <div class="form-group">
+                <a href="/viewbook">View Books</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Edit User</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,10 +16,11 @@
         h2 {
             color: #333;
             margin-top: 50px;
+            text-align: center;
         }
 
         .container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
             background-color: #fff;
             padding: 30px;
@@ -31,6 +32,7 @@
             border: 2px solid #ccc;
             border-radius: 8px;
             padding: 15px;
+            margin-bottom: 20px;
         }
 
         legend {
@@ -41,22 +43,28 @@
 
         table {
             width: 100%;
-            margin-top: 20px;
             border-collapse: collapse;
         }
 
         td {
-            padding: 8px;
+            padding: 10px;
             font-size: 14px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
         }
 
         input[type="text"],
         input[type="email"],
         input[type="password"],
-        select {
-            width: 100%;
+        select,
+        input[type="file"] {
+            width: 90%;
             padding: 10px;
-            margin: 10px 0;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 14px;
@@ -67,8 +75,11 @@
             margin-right: 10px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         button {
@@ -97,7 +108,6 @@
             color: #4CAF50;
             text-decoration: none;
             font-size: 18px;
-            background-color: #fff;
             padding: 10px 20px;
             border-radius: 5px;
             border: 1px solid #4CAF50;
@@ -109,66 +119,84 @@
             color: white;
         }
 
-        .checkbox-group {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
 
-        .radio-group {
-            display: flex;
-            gap: 15px;
+        /* Responsive Styling */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            table td {
+                font-size: 12px;
+            }
+
+            button {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 
 <body>
-    <h2 align="center">Edit User</h2>
+
+    <h2>Edit User</h2>
     <div class="container">
         <form action="/updateuser" method="post" enctype="multipart/form-data">
             <input type="hidden" name="editid" value="<%= single.id %>">
+
             <fieldset>
                 <legend>User Information</legend>
-                <table align="center" cellpadding="10">
+
+                <table>
+                    <!-- Name -->
                     <tr>
-                        <td>Name:</td>
-                        <td><input type="text" name="name" value="<%= single.username %>" required
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" id="name" name="name" value="<%= single.username %>" required
                                 placeholder="Enter your name"></td>
                     </tr>
+
+                    <!-- Email -->
                     <tr>
-                        <td>Email:</td>
-                        <td><input type="email" name="email" value="<%= single.useremail %>" required
+                        <td><label for="email">Email:</label></td>
+                        <td><input type="email" id="email" name="email" value="<%= single.useremail %>" required
                                 placeholder="Enter your email"></td>
                     </tr>
+
+                    <!-- Password -->
                     <tr>
-                        <td>Password:</td>
-                        <td><input type="password" name="password" value="<%= single.userpassword %>" required
-                                placeholder="Enter your password"></td>
+                        <td><label for="password">Password:</label></td>
+                        <td><input type="password" id="password" name="password" value="<%= single.userpassword %>"
+                                required placeholder="Enter your password"></td>
                     </tr>
+
+                    <!-- Gender -->
                     <tr>
-                        <td>Gender:</td>
+                        <td><label>Gender:</label></td>
                         <td class="radio-group">
-                            <input type="radio" name="gender" <% if(single?.gender==="Male" ) { %> checked <% } %>
-                                value="Male" required> Male
-                                <input type="radio" name="gender" <% if(single?.gender==="Female" ) { %> checked <% } %>
-                                    value="Female" required> Female
+                            <label><input type="radio" name="gender" <% if(single?.gender==="Male" ) { %> checked <% }
+                                    %> value="Male" required> Male</label>
+                            <label><input type="radio" name="gender" <% if(single?.gender==="Female" ) { %> checked <% }
+                                    %> value="Female" required> Female</label>
                         </td>
                     </tr>
+
+                    <!-- Hobby -->
                     <tr>
-                        <td>Hobby:</td>
+                        <td><label>Hobby:</label></td>
                         <td class="checkbox-group">
-                            <input type="checkbox" name="hobby" <% if(single?.hobby.includes("Cricket")) { %> checked <%
-                                } %> value="Cricket"> Cricket
-                                <input type="checkbox" name="hobby" <% if(single?.hobby.includes("Music")) { %> checked
-                                <% } %> value="Music"> Music
-                                    <input type="checkbox" name="hobby" <% if(single?.hobby.includes("Travelling")) { %>
-                                    checked <% } %> value="Travelling"> Travelling
+                            <label><input type="checkbox" name="hobby" <% if(single?.hobby.includes("Cricket")) { %>
+                                checked <% } %> value="Cricket"> Cricket</label>
+                            <label><input type="checkbox" name="hobby" <% if(single?.hobby.includes("Music")) { %>
+                                checked <% } %> value="Music"> Music</label>
+                            <label><input type="checkbox" name="hobby" <% if(single?.hobby.includes("Travelling")) { %>
+                                checked <% } %> value="Travelling"> Travelling</label>
                         </td>
                     </tr>
+                    <!-- City -->
                     <tr>
-                        <td>City:</td>
+                        <td><label for="city">City:</label></td>
                         <td>
-                            <select name="city" required>
+                            <select id="city" name="city" required>
                                 <option value="">Select a city</option>
                                 <option <% if(single?.city==="Surat" ) { %> selected <% } %> value="Surat">Surat
                                 </option>
@@ -181,21 +209,23 @@
                             </select>
                         </td>
                     </tr>
+
+                    <!-- updated file uplode -->
                     <tr>
-                        <td>File :</td>
+                        <td><label for="image">File:</label></td>
                         <td>
-                            <input type="file" name="image">
-                            <img src="<% single?.image %>" alt="" width="100">
+                            <input type="file" id="image" name="image">
+                            <img src="<%= single?.image %>" alt="" width="100" style="margin-top: 10px;">
                         </td>
                     </tr>
                 </table>
-                <button type="submit">Save Changes</button>
+                <button type="submit">View Changes</button>
             </fieldset>
         </form>
-
-        <div class="footer">
+        <!-- Footer with root -->
+        <!-- <div class="footer">
             <a href="/viewuser">View Users</a>
-        </div>
+        </div> -->
     </div>
 </body>
 

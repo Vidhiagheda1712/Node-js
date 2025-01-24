@@ -12,8 +12,9 @@ const UserModel = require('./models/UserModel');
 const fs = require('fs');
 app.use('/uplodes', express.static(path.join(__dirname, 'uplodes')));
 app.use(express.urlencoded());
-const multer = require('multer');
+
 // file uplode start
+const multer = require('multer');
 const stg = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uplodes')
@@ -97,7 +98,7 @@ app.get('/edituser', (req, res) => {
 
         })
 })
-app.post('/updateuser', (req, res) => {
+app.post('/updateuser',imguplode, (req, res) => {
     const { editid, name, email, password, gender, hobby, city } = req.body;
     if (req.file) {
         //old image remove
@@ -138,7 +139,7 @@ app.post('/updateuser', (req, res) => {
                     gender: gender,
                     hobby: hobby,
                     city: city,
-                    image: req.file?.path
+                    image: singlerow?.image
                 }).then((user) => {
                     console.log(`user Update Successfully...`);
                     return res.redirect('/viewuser');
