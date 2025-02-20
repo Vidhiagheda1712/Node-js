@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Cart</title>
+    <style>
+        /* Basic Reset */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f8f8;
+            background-image: url('https://www.shutterstock.com/image-photo/magic-book-open-antique-pages-260nw-2184380567.jpg');
+            /* Background Image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            padding: 40px 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 30px;
+            font-size: 50px;
+            font-weight: 700;
+        }
+
+        /* Container for Cards */
+        .book-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+            justify-items: center;
+            margin: 50px;
+        }
+
+        .book-card {
+            background-color: rgba(255, 255, 255, 0.691);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 40px 55px;
+            width: 100%;
+            max-width: 100%;
+            margin: 100px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+
+
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-title {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .book-title:hover {
+            color: #1a1c2a;
+        }
+
+        .book-description {
+            font-size: 18px;
+            color: #555;
+            height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .book-info {
+            margin-bottom: 10px;
+        }
+
+        .book-price,
+        .book-author {
+            font-size: 20px;
+            color: #777;
+        }
+
+        /* Actions */
+        .actions {
+            display: flex;
+            justify-content: left;
+            gap: 15px;
+        }
+
+        .actions a {
+            padding: 12px 20px;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .actions a.edit {
+            background-color: #1a1c2a;
+        }
+
+        .actions a.edit:hover {
+            background-color: #1a1c2ae3;
+            transform: scale(1.05);
+        }
+
+        .actions a.delete {
+            background-color: #1a1c2a;
+        }
+
+        .actions a.delete:hover {
+            background-color: #1a1c2ae9;
+            transform: scale(1.05);
+        }
+
+        /* Add Book Button */
+        a.add-book {
+            display: inline-block;
+            background-color: #1a1c2ae5;
+            color: white;
+            text-decoration: none;
+            padding: 20px 70px;
+            border-radius: 5px;
+            margin-left: 55px;
+            display: inline-block;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        a.add-book:hover {
+            background-color: white;
+            transform: scale(1.05);
+            color: #1a1c2ae5;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .book-container {
+                grid-template-columns: 1fr;
+            }
+
+            .book-card {
+                padding: 15px;
+            }
+
+            .book-title {
+                font-size: 18px;
+            }
+
+            .book-description {
+                font-size: 12px;
+            }
+
+            .actions a {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+
+            a.add-book {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Book List</h1>
+    <div class="book-container">
+        <% allrecord.map((val, index)=> { %>
+            <div class="book-card">
+                <div class="book-title">
+                    Name: <%= val?.bookname %>
+                </div>
+                <div class="book-description">
+                    Discription: <%= val?.bookdiscription %>
+                </div>
+                <div class="book-info">
+                    <div class="book-price">
+                        Price: <%= val?.bookprice %>
+                    </div>
+                    <div class="book-author">
+                        Author: <%= val?.bookauthor %>
+                    </div>
+                </div>
+                <div class="actions">
+                    <a href="/deletebook?did=<%= val.id %>" class="delete">Delete</a>
+                    <a href="/editbook?eid=<%= val.id %>" class="edit">Edit</a>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+
+    <a href="/" class="add-book">Add Book</a>
+
+</body>
+
+</html>

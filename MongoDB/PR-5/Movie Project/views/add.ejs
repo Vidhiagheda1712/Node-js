@@ -1,0 +1,266 @@
+<html>
+
+<head>
+  <title>MOVIE DETAILS</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<style>
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  body {
+    background-image: url('https://static.vecteezy.com/system/resources/thumbnails/030/634/911/small/city-burn-explosion-town-free-photo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  }
+
+  h2 {
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #FF6600;
+  }
+
+  .form-container {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    padding: 3rem;
+    width: 600px;
+    max-width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .form-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  label {
+    font-size: 16px;
+    color: #FF6600;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #FF6600;
+    box-shadow: 0px 4px 6px rgba(255, 102, 0, 0.2);
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+  }
+
+  input:focus,
+  textarea:focus {
+    background-color: rgba(255, 102, 0, 0.1);
+    border-color: #FF6600;
+    box-shadow: 0px 0px 10px rgba(255, 102, 0, 0.5);
+  }
+
+  .button {
+    background: linear-gradient(135deg, #FF6600, #FF9900);
+    border: none;
+    color: white;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    width: 100%;
+    text-align: center;
+  }
+
+  .button:hover {
+    opacity: 0.9;
+    transform: translateY(-5px);
+    background: linear-gradient(135deg, #FF9900, #FF6600);
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .button-container a {
+    background: #FF6600;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+  }
+
+  .button-container a:hover {
+    opacity: 0.8;
+    background: #FF9900;
+  }
+
+  /* Navbar Styles */
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgb(0, 0, 0);
+    padding: 25px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  }
+
+  .navbar a {
+    text-decoration: none;
+    font-size: 20px;
+    color: antiquewhite;
+    padding-left: 25px;
+  }
+
+  .logo-container h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #FF6600;
+  }
+
+  .menu-container ul {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+  }
+
+  .menu-list-item {
+    font-size: 16px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .menu-list-item:hover {
+    color: #FF6600;
+  }
+
+  .profile-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .profile-container img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 36px;
+    }
+
+    .form-container {
+      width: 90%;
+      padding: 1.5rem;
+    }
+
+    .button-container a {
+      width: 100%;
+    }
+
+    .navbar {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .menu-container ul {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+    }
+  }
+</style>
+
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo-container">
+      <h1 class="logo">flakes</h1>
+    </div>
+    <div class="menu-container">
+      <ul class="menu-list">
+        <li class="menu-list-item active"> <a class="nav-link" href="/">Home</a> </li>
+        <li class="menu-list-item"> <a class="nav-link" href="/">Movies</a></li>
+        <li class="menu-list-item"> <a class="nav-link" href="/">Popular</a></li>
+        <li href="/add" class="menu-list-item"> <a class="nav-link" href="/add">Add</a></li>
+        <li class="menu-list-item"> <a class="nav-link" href="/views">View</a> </li>
+      </ul>
+    </div>
+    <div class="profile-container">
+      <img class="profile-picture"
+        src="https://cdni.iconscout.com/illustration/premium/thumb/female-user-image-illustration-download-in-svg-png-gif-file-formats--person-girl-business-pack-illustrations-6515859.png?f=webp"
+        alt="Profile Picture">
+      <span class="profile-text">Profile</span>
+      <i class="fas fa-caret-down"></i>
+    </div>
+  </div>
+
+  <!-- Form Container -->
+  <div class="form-container">
+    <h2>Add Movie Details</h2>
+    <form action="/insert" enctype="multipart/form-data" method="post" class="orange-form">
+      <div class="input-container">
+        <div class="name-container">
+          <label for="name">Movie Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter Movie Name" required>
+        </div>
+        <div class="description-container">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Enter Movie Description" rows="4"
+            required></textarea>
+        </div>
+        <div class="price-container">
+          <label for="price">Price</label>
+          <input type="text" id="price" name="price" placeholder="Enter Price" required>
+        </div>
+        <div class="image-container">
+          <label for="image">Movie Image</label>
+          <input type="file" id="image" name="image" required>
+        </div>
+        <div class="button-container">
+          <input type="submit" class="button" value="Add" />
+        </div>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

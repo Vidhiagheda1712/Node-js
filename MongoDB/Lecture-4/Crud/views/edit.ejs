@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        fieldset {
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        input[type="file"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #4CAF50;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .footer a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+
+        /* Responsive Styling */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            table td {
+                font-size: 12px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Edit User</h2>
+    <div class="container">
+        <form action="/updateuser" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="editid" value="<%= single.id %>">
+
+            <fieldset>
+                <legend>User Information</legend>
+
+                <table>
+                    <!-- Name -->
+                    <tr>
+                        <td><label for="name">Name:</label></td>
+                        <td><input type="text" id="name" name="name" value="<%= single.username %>" required
+                                placeholder="Enter your name"></td>
+                    </tr>
+
+                    <!-- Email -->
+                    <tr>
+                        <td><label for="email">Email:</label></td>
+                        <td><input type="email" id="email" name="email" value="<%= single.useremail %>" required
+                                placeholder="Enter your email"></td>
+                    </tr>
+
+                    <!-- Password -->
+                    <tr>
+                        <td><label for="password">Password:</label></td>
+                        <td><input type="password" id="password" name="password" value="<%= single.userpassword %>"
+                                required placeholder="Enter your password"></td>
+                    </tr>
+
+                    <!-- Gender -->
+                    <tr>
+                        <td><label>Gender:</label></td>
+                        <td class="radio-group">
+                            <label><input type="radio" name="gender" <% if(single?.gender==="Male" ) { %> checked <% }
+                                    %> value="Male" required> Male</label>
+                            <label><input type="radio" name="gender" <% if(single?.gender==="Female" ) { %> checked <% }
+                                    %> value="Female" required> Female</label>
+                        </td>
+                    </tr>
+
+                    <!-- Hobby -->
+                    <tr>
+                        <td><label>Hobby:</label></td>
+                        <td class="checkbox-group">
+                            <label><input type="checkbox" name="hobby" <% if(single?.hobby.includes("Cricket")) { %>
+                                checked <% } %> value="Cricket"> Cricket</label>
+                            <label><input type="checkbox" name="hobby" <% if(single?.hobby.includes("Music")) { %>
+                                checked <% } %> value="Music"> Music</label>
+                            <label><input type="checkbox" name="hobby" <% if(single?.hobby.includes("Travelling")) { %>
+                                checked <% } %> value="Travelling"> Travelling</label>
+                        </td>
+                    </tr>
+                    <!-- City -->
+                    <tr>
+                        <td><label for="city">City:</label></td>
+                        <td>
+                            <select id="city" name="city" required>
+                                <option value="">Select a city</option>
+                                <option <% if(single?.city==="Surat" ) { %> selected <% } %> value="Surat">Surat
+                                </option>
+                                <option <% if(single?.city==="Vadodara" ) { %> selected <% } %>
+                                        value="Vadodara">Vadodara</option>
+                                <option <% if(single?.city==="Rajkot" ) { %> selected <% } %> value="Rajkot">Rajkot
+                                </option>
+                                <option <% if(single?.city==="Ahmedabad" ) { %> selected <% } %>
+                                        value="Ahmedabad">Ahmedabad</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!-- updated file uplode -->
+                    <tr>
+                        <td><label for="image">File:</label></td>
+                        <td>
+                            <input type="file" id="image" name="image">
+                            <img src="<%= single?.image %>" alt="" width="100" style="margin-top: 10px;">
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit">View Changes</button>
+            </fieldset>
+        </form>
+        <!-- Footer with root -->
+        <!-- <div class="footer">
+            <a href="/viewuser">View Users</a>
+        </div> -->
+    </div>
+</body>
+
+</html>

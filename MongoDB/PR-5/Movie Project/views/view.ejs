@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Movies</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background-image: url('https://img.freepik.com/premium-photo/dark-gradient-background-artistic-blurry-colorful-wallpaper_1008660-837.jpg?semt=ais_hybrid');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 50px 20px;
+    }
+
+    .user-card {
+      background-color: #ffffffdf;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      width: 280px;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    }
+
+    .user-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      border-color: #c65b14;
+    }
+
+    .user-card h3 {
+      margin: 10px 0;
+      color: #333;
+      font-size: 25px;
+    }
+
+    .user-card p {
+      margin: 8px 0;
+      color: #777;
+      font-size: 18px;
+    }
+
+    .user-card a {
+      display: inline-block;
+      margin: 10px 5px;
+      padding: 10px 20px;
+      background-color: #FF6600;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .user-card a:hover {
+      background-color: #cc5200;
+      transform: scale(1.05);
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .footer a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 18px;
+      background-color: #4CAF50;
+      padding: 12px 25px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .footer a:hover {
+      background-color: #45a049;
+    }
+
+    .navbar {
+
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #000;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar a {
+      text-decoration: none;
+      font-size: 20px;
+      color: #fff;
+      padding-left: 25px;
+    }
+
+    .logo-container h1 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #FF6600;
+    }
+
+    .menu-container ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .menu-list-item {
+      font-size: 16px;
+      color: #ccc;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .menu-list-item:hover {
+      color: #FF6600;
+    }
+
+    .profile-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .profile-container img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* Navbar Styles */
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 36px;
+      }
+
+      .form-container {
+        width: 90%;
+        padding: 1.5rem;
+      }
+
+      .button-container a {
+        width: 100%;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .menu-container ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <div class="logo-container">
+      <h1 class="logo">flakes</h1>
+    </div>
+    <div class="menu-container">
+      <ul class="menu-list">
+        <li class="menu-list-item active"> <a class="nav-link" href="/">Home</a> </li>
+        <li class="menu-list-item"> <a class="nav-link" href="/">Movies</a></li>
+        <li class="menu-list-item"> <a class="nav-link" href="/">Popular</a></li>
+        <li href="/add" class="menu-list-item"> <a class="nav-link" href="/add">Add</a></li>
+        <li class="menu-list-item"> <a class="nav-link" href="/views">View</a> </li>
+      </ul>
+    </div>
+    <div class="profile-container">
+      <img class="profile-picture"
+        src="https://cdni.iconscout.com/illustration/premium/thumb/female-user-image-illustration-download-in-svg-png-gif-file-formats--person-girl-business-pack-illustrations-6515859.png?f=webp"
+        alt="Profile Picture">
+      <span class="profile-text">Profile</span>
+      <i class="fas fa-caret-down"></i>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <% record.map((val, index)=> { %>
+      <div class="user-card">
+        <h3>Movie <%= index + 1 %>
+        </h3>
+        <p><strong>Name:</strong>
+          <%= val?.moviename %>
+        </p>
+        <p><strong>Description:</strong>
+          <%= val?.moviediscription %>
+        </p>
+        <p><strong>Price:</strong>
+          <%= val?.movieprice %>
+        </p>
+        <p><img src="<%= val?.movieimage %>" width="100" alt="Movie Image"></p>
+        <div class="actions">
+          <a href="/deletemovie?did=<%= val.id %>" class="delete">Delete</a>
+          <a href="/editmovie?eid=<%= val.id %>" class="edit">Edit</a>
+        </div>
+      </div>
+      <% }); %>
+  </div>
+
+</body>
+
+</html>
