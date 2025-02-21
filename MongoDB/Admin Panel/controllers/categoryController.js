@@ -50,17 +50,38 @@ const deleteCategory = async (req, res) => {
     }
 
 }
-// const editCategory = async (req, res) => {
-//        try{
-              
-//        }
-//        catch (err) {
-//         console.log(err);
-//         return false;
+const editCategory = async (req, res) => {
+    try {
+        let id = req.query?.id;
+        let single = await categoryModel.findById(id);
+        return res.render('category/edit_Category', {
+            single: single
+        })
 
-//     }
+    }
+    catch (err) {
+        console.log(err);
+        return false;
 
-// }
+    }
+
+}
+const upadateCategory = async (req, res) => {
+    try {
+        const { editid, category } = req.body;
+        await categoryModel.findByIdAndUpdate(editid, {
+            category: category
+        })
+        req.flash('success', "Category Update Successfully....");
+        return res.redirect('/category');
+    }
+    catch (err) {
+        console.log(err);
+        return false;
+
+    }
+
+}
 const changeStatus = async (req, res) => {
     try {
         const { id, status } = req.query;
@@ -87,4 +108,4 @@ const changeStatus = async (req, res) => {
     }
 }
 
-module.exports = { addCategoryPage, viewCategoryPage, insertCategory, changeStatus, deleteCategory,/* editCategory */ }
+module.exports = { addCategoryPage, viewCategoryPage, insertCategory, changeStatus, deleteCategory, editCategory, upadateCategory }
