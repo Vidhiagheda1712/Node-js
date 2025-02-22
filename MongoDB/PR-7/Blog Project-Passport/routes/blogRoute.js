@@ -2,7 +2,7 @@ const express = require('express');
 const routes = express.Router();
 const { homePage, addPage, viewPage, addData, deleteData, readData } = require('../controllers/blogcontroller');
 
-
+const passport = require('passport');
 
 // multer start
 
@@ -22,10 +22,10 @@ const imgupload = multer({ storage: st }).single('image')
 // multer end
 routes.post('/insert', imgupload, addData)
 routes.get('/', homePage)
-routes.get('/add', addPage)
-routes.get('/views', viewPage)
+routes.get('/add',passport.checkUser, addPage)
+routes.get('/views',passport.checkUser, viewPage)
 routes.get('/deleteblog', deleteData)
-routes.get('/editblog', readData)
+routes.get('/editblog',passport.checkUser, readData)
 
 
 

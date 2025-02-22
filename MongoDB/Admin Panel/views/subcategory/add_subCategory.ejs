@@ -10,18 +10,22 @@
         </div>
         <% } %>
           <div class="row d-flex justify-content-center">
-            <div class="col-md-9  stretch-card ">
-              <div class="card" style="height: 250px;">
+            <div class="col-md-9  stretch-card">
+              <div class="card" style="height:300px;">
                 <div class="card-body">
-                  <h4 class="card-title " align="center">Category</h4>
-
-                  <form class="forms-sample" method="post" action="/category/insertcategory">
+                  <h4 class="card-title " align="center">Sub Category</h4>
+                  <form class="forms-sample" method="post" action="/subcategory/insertsubcategory">
                     <div class="form-group">
                       <label for="exampleInputUsername1">Category Name</label>
                       <input type="text" class="form-control" id="exampleInputUsername1" name="category"
-                        placeholder="Category" style="margin-top: 15px;">
+                        placeholder="Category">
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2 px-3 py-2" style="margin-top: 25px;">Submit</button>
+                    <div class="form-group">
+                      <label for="exampleInputUsername1">Sub Category Name</label>
+                      <input type="text" class="form-control" id="exampleInputUsername1" name="category"
+                        placeholder="Sub Category Name">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-3">Submit</button>
                   </form>
                 </div>
               </div>

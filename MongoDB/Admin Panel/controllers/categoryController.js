@@ -33,8 +33,6 @@ const insertCategory = async (req, res) => {
         return false;
 
     }
-
-
 }
 const deleteCategory = async (req, res) => {
     try {
