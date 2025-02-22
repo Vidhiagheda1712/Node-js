@@ -4,30 +4,34 @@
             <div class="page-header">
                 <h3 class="page-title text-center"></h3>
             </div>
-            <% if(locals.message?.success){ %>
-                <div class="alert alert-success w-50">
-                    <%= locals.message?.success %>
+            <div class="row  d-flex justify-content-center align-items-center">
+                <div class="col-md-9">
+                    <% if(locals.message?.success){ %>
+                        <div class="alert alert-success w-50">
+                            <%= locals.message?.success %>
+                        </div>
+                        <% } %>
                 </div>
-                <% } %>
-                    <div class="row">
-                        <div class="col-md-6  stretch-card ">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title" align="center">Edit Category</h4>
-                                   
-                                    <form class="forms-sample" method="post" action="/category/updatecategory">
-                                        <input type="hidden" name="editid" value="<%= single?.id %>">
-                                        <div class="form-group">
-                                            <label for="exampleInputUsername1">Category Name</label>
-                                            <input type="text" class="form-control" id="exampleInputUsername1"
-                                                name="category" placeholder="Category" value="<%= single?.category %>">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary mr-3">Update</button>
-                                    </form>
+            </div>
+            <div class="row">
+                <div class="col-md-6  stretch-card ">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title" align="center">Edit Category</h4>
+
+                            <form class="forms-sample" method="post" action="/category/updatecategory">
+                                <input type="hidden" name="editid" value="<%= single?.id %>">
+                                <div class="form-group">
+                                    <label for="exampleInputUsername1">Category Name</label>
+                                    <input type="text" class="form-control" id="exampleInputUsername1" name="category"
+                                        placeholder="Category" value="<%= single?.category %>">
                                 </div>
-                            </div>
+                                <button type="submit" class="btn btn-primary mr-3">Update</button>
+                            </form>
                         </div>
                     </div>
+                </div>
+            </div>
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:../../partials/_footer.html -->

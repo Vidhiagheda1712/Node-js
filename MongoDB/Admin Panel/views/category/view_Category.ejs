@@ -7,69 +7,73 @@
 
         </nav>
       </div>
-      <% if(locals.message?.success){ %>
-        <div class="alert alert-success w-50">
-          <%= locals.message?.success %>
+      <div class="row  d-flex justify-content-center align-items-center">
+        <div class="col-md-9">
+          <% if(locals.message?.success){ %>
+            <div class="alert alert-success">
+              <%= locals.message?.success %>
+            </div>
+            <% } %>
         </div>
-        <% } %>
-          <div class="row d-flex justify-content-center">
-            <div class="col-lg-9 grid-margin stretch-card ">
-              <div class="card" style="height: 200px;">
-                <div class="card-body">
-                  <h4 class="card-title" style="text-align: center;">View Category</h4>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-9 grid-margin stretch-card ">
+          <div class="card" style="height:auto;">
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center;">View Category</h4>
 
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Category Name</th>
-                          <th>Actions</th>
-                          <th>Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% category.map((val,index)=>{ %>
-                          <tr style="margin: 20px 0px;">
-                            <td>
-                              <%= ++index %>
-                            </td>
-                            <td>
-                              <%= val?.category %>
-                            </td>
-                            <td>
-                              <a class="btn btn-danger btn-sm" href="/category/deletecategory?id=<%= val?.id %>">
-                                Delete
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Category Name</th>
+                      <th>Actions</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% category.map((val,index)=>{ %>
+                      <tr style="margin: 20px 0px;">
+                        <td>
+                          <%= ++index %>
+                        </td>
+                        <td>
+                          <%= val?.category %>
+                        </td>
+                        <td>
+                          <a class="btn btn-danger btn-sm" href="/category/deletecategory?id=<%= val?.id %>">
+                            Delete
+                          </a>
+                          <a class="btn btn-primary btn-sm" href="/category/editcategory?id=<%= val?.id %>">
+                            Edit
+                          </a>
+                        </td>
+                        <td>
+                          <% if(val?.status=='active' ){ %>
+                            <a class="btn btn-success btn-sm"
+                              href="/category/changestatus?id=<%= val?.id %>&status=deactive">
+                              <%= val?.status %>
+                            </a>
+
+                            <% } else{ %>
+                              <a class="btn btn-danger btn-sm"
+                                href="/category/changestatus?id=<%= val?.id %>&status=active">
+                                <%= val?.status %>
                               </a>
-                              <a class="btn btn-primary btn-sm" href="/category/editcategory?id=<%= val?.id %>">
-                                Edit
-                              </a>
-                            </td>
-                            <td>
-                              <% if(val?.status=='active' ){ %>
-                                <a class="btn btn-success btn-sm"
-                                  href="/category/changestatus?id=<%= val?.id %>&status=deactive">
-                                  <%= val?.status %>
-                                </a>
+                              <% }%>
+                        </td>
+                      </tr>
+                      <% }) %>
 
-                                <% } else{ %>
-                                  <a class="btn btn-danger btn-sm"
-                                    href="/category/changestatus?id=<%= val?.id %>&status=active">
-                                    <%= val?.status %>
-                                  </a>
-                                  <% }%>
-                            </td>
-                          </tr>
-                          <% }) %>
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                  </tbody>
+                </table>
               </div>
             </div>
-
           </div>
+        </div>
+
+      </div>
     </div>
     <!-- content-wrapper ends -->
     <!-- partial:../../partials/_footer.html -->
