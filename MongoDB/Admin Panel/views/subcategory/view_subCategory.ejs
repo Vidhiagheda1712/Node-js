@@ -20,7 +20,7 @@
         <div class="col-lg-9 grid-margin stretch-card ">
           <div class="card" style="height:auto;">
             <div class="card-body">
-              <h4 class="card-title" style="text-align: center;">View Category</h4>
+              <h4 class="card-title" style="text-align: center;">View SubCategory</h4>
 
               <div class="table-responsive">
                 <table class="table">
@@ -28,25 +28,28 @@
                     <tr>
                       <th>ID</th>
                       <th>Category Name</th>
+                      <th>SubCategory Name</th>
                       <th>Actions</th>
                       <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <% category.map((val,index)=>{ %>
+                    <% subcategory.map((val,index)=>{ %>
                       <tr style="margin: 20px 0px;">
                         <td>
                           <%= ++index %>
                         </td>
                         <td>
-                          <%= val?.category %>
+                          <%= val?.categoryId?.category %>
                         </td>
-
+                        <td>
+                          <%= val?.subcategory %>
+                        </td>
                         <td>
                           <a class="btn btn-danger btn-sm" href="/category/deletecategory?id=<%= val?.id %>">
                             Delete
                           </a>
-                          <a class="btn btn-primary btn-sm" href="/category/editcategory?id=<%= val?.id %>">
+                          <a class="btn btn-primary btn-sm" href="/subcategory/editsubcategory?id=<%= val?.id %>">
                             Edit
                           </a>
                         </td>
