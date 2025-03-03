@@ -10,6 +10,7 @@ const cookieparser = require('cookie-parser');
 app.use(cookieparser());
 app.use(express.urlencoded());
 app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // login system - passport start 
 
@@ -41,8 +42,6 @@ app.use('/', (req, res, next) => {
 })
 // flash massege end 
 app.use('/', require('./routes/indexRoute'))
-
-
 app.listen(port, (err) => {
     if (err) {
         console.log(err);

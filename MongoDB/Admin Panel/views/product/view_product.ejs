@@ -1,0 +1,116 @@
+<%- include('../header') %>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+
+        <nav aria-label="breadcrumb">
+
+        </nav>
+      </div>
+      <div class="row  d-flex justify-content-center align-items-center">
+        <div class="col-md-9">
+          <% if(locals.message?.success){ %>
+            <div class="alert alert-success">
+              <%= locals.message?.success %>
+            </div>
+            <% } %>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-9 ">
+          <div class="card" style="height:auto;">
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center;">View Product</h4>
+
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Category Name</th>
+                      <th>SubCategory Name</th>
+                      <th>ExSubCategory Name</th>
+                      <th>Product Name</th>
+                      <th>Product Price</th>
+                      <th>Product Qty</th>
+                      <th>Image</th>
+                      <th>Actions</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% products.map((val,index)=>{ %>
+                      <tr style="margin: 20px 0px;">
+                        <td>
+                          <%= ++index %>
+                        </td>
+                        <td>
+                          <%= val?.categoryId?.category %>
+                        </td>
+                        <td>
+                          <%= val?.subcategoryId?.subcategory %>
+                        </td>
+
+                        <td>
+                          <%= val?.exsubcategoryId?.exsubcategory %>
+                        </td>
+                        <td>
+                          <%= val?.productname %>
+                        </td>
+                        <td>
+                          <%= val?.productprice%>
+                        </td>
+                        <td>
+                          <%= val?.productqty %>
+                        </td>
+                        <td>
+                          <img src="<%= val?.image %>" width="50px" alt="">
+                        </td>
+                        <td>
+                          <a class="btn btn-danger btn-sm" href="/exsubcategory/deleteexsubcategory?id=<%= val?.id %>">
+                            Delete
+                          </a>
+                          <a class="btn btn-primary btn-sm" href="/exsubcategory/editexsubcategory?id=<%= val?.id %>">
+                            Edit
+                          </a>
+                        </td>
+                        <td>
+                          <% if(val?.status=='active' ){ %>
+                            <a class="btn btn-success btn-sm"
+                              href="/product/changestatus?id=<%= val?.id %>&status=active">
+                              <%= val?.status %>
+                            </a>
+
+                            <% } else{ %>
+                              <a class="btn btn-danger btn-sm"
+                                href="/product/changestatus?id=<%= val?.id %>&status=deactive">
+                                <%= val?.status %>
+                              </a>
+                              <% }%>
+                        </td>
+                      </tr>
+                      <% }) %>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
+          2020</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a>
+          from Bootstrapdash.com</span>
+      </div>
+    </footer>
+    <!-- partial -->
+  </div>
+  <%- include('../footer') %>
