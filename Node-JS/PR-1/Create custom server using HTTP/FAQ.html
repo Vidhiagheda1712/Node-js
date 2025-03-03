@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ</title>
+</head>
+<style>
+  .title {
+    font-size: 25px;
+    font-weight: 600;
+    padding: 20px 0px;
+  }
+
+  #FAQ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+      
+  .site-navigation {
+    background-color: #52778f;
+    width: 100%;
+    padding: 3px;
+  }
+
+  .site-navigation ul,
+  .site-navigation li {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 20px;
+    justify-content: center;
+  }
+
+  .site-navigation li {
+    display: inline-block;
+    margin: 1.4em 1em 1em 1em;
+
+  }
+
+  .site-navigation ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 600;
+    padding: 5px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  .site-navigation ul li a:hover {
+    background: #fff;
+    color: #52778f;
+    padding: 15px;
+    border-radius: 5px;
+  }
+
+  .accordian {
+    width: 100%;
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 8px;
+  }
+
+  .item {
+    background-color: #e7ecf5;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
+
+  .item.selected {
+    background-color: #ffffff;
+  }
+
+  .item::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #52778f;
+  }
+
+  .FAQ-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 18px;
+    color: #131414;
+  }
+
+  .faqQuestion {
+    font-size: 15px;
+    color: #131414;
+    text-align: start;
+  }
+
+  .FAQ-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s cubic-bezier(0, 1, 0, 1);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #131414;
+  }
+
+  .FAQ-content.show {
+    max-height: 9999px;
+    transition: max-height 0.8s cubic-bezier(1, 0, 1, 0);
+  }
+
+  .expandToggle {
+    background: #ffffff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .FAQ-ShowMore {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .FAQ-ShowMore button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #52778f;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .FAQ-ShowMore button:hover {
+    background-color: #52778fc7;
+    color: black;
+    font-weight: 700;
+  }
+
+  @media (max-width: 1024px) {
+    .accordian {
+      max-width: 90%;
+    }
+
+    .item {
+      padding: 12px 16px;
+    }
+
+    .FAQ-title {
+      font-size: 16px;
+    }
+
+    .expandToggle {
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .accordian {
+      padding: 10px;
+    }
+
+    .item {
+      padding: 10px 14px;
+    }
+
+    .FAQ-title {
+      font-size: 14px;
+    }
+
+    .expandToggle {
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .accordian {
+      padding: 5px;
+    }
+
+    .item {
+      padding: 8px 12px;
+    }
+
+    .FAQ-title {
+      font-size: 12px;
+    }
+
+    .expandToggle {
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+    }
+    
+  }
+</style>
+
+<body>
+
+  <body bgcolor="#D6EAF8">
+
+    <nav class="site-navigation">
+      <ul>
+        <li> <a href="/home">Home</a></li>
+        <li> <a href="/about">About</a></li>
+        <li> <a href="/pages">Pages</a></li>
+        <li> <a href="/blog">Blog</a></li>
+        <li> <a href="/contact">Contact</a></li>
+        <li> <a href="/services">Services</a></li>
+        <li> <a href="/shop">Shop</a></li>
+        <li> <a href="/works">Works</a></li>
+        <li> <a href="/faq">FAQ</a></li>
+        <li> <a href="/news">News</a></li>
+      </ul>
+    </nav>
+    <div id="FAQ">
+      <p class="title">FAQ'S</p>
+      <div class="accordian">
+
+        <div class="item">
+          <div class="FAQ-title">
+            <p class="faqQuestion">1. What services do you offer as a full-stack developer?</p>
+            <span class="expandToggle">+</span>
+          </div>
+          <div class="FAQ-content">
+            <p>I provide comprehensive full-stack development services, which include both front-end and back-end
+              solutions. My expertise covers a wide range of technologies including HTML, CSS, Bootstrap, JavaScript,
+              React.js, AngularJS, ChakraUI, Node.js, Express.js, MongoDB, SQL, C#, .NET Core, and ASP.NET. Whether you
+              need a custom website, web application, or a complete digital solution, I can help.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="FAQ-title">
+            <p class="faqQuestion">2. How can I contact you for a freelance project?</p>
+            <span class="expandToggle">+</span>
+          </div>
+          <div class="FAQ-content">
+            <p>You can reach me via email at <a
+                href="mailto:shaikrafikpasha786@gmail.com">shaikrafikpasha786@gmail.com</a> or by phone at +91
+              8008146642. For a more detailed view of my work, you can check out my GitHub profile <a
+                href="https://github.com/Rafikpashashaik" target="_blank">here</a> or my CodePen <a
+                href="https://codepen.io/Rafael-007/pen/OJeELZX" target="_blank">here</a>.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="FAQ-title">
+            <p class="faqQuestion">3. What is your process for starting a new project?</p>
+            <span class="expandToggle">+</span>
+          </div>
+          <div class="FAQ-content">
+            <p>I start by discussing your project requirements and goals. This includes understanding your vision,
+              budget, and timeline. After that, I provide a proposal outlining the scope of work, milestones, and
+              deliverables. Once we agree on the terms, I begin the development process, keeping you updated throughout
+              to ensure everything aligns with your expectations.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="FAQ-title">
+            <p class="faqQuestion">4. Can you provide examples of your previous work?</p>
+            <span class="expandToggle">+</span>
+          </div>
+          <div class="FAQ-content">
+            <p>Absolutely! You can view my portfolio on GitHub <a href="https://github.com/Rafikpashashaik"
+                target="_blank">here</a> and my CodePen <a href="https://codepen.io/Rafael-007/pen/OJeELZX"
+                target="_blank">here</a>. These platforms showcase a variety of projects demonstrating my skills in both
+              front-end and back-end development.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="FAQ-title">
+            <p class="faqQuestion">5. Where can I find more information about your professional background?</p>
+            <span class="expandToggle">+</span>
+          </div>
+          <div class="FAQ-content">
+            <p>You can find more information about my professional experience, skills, and endorsements on my LinkedIn
+              profile <a href="https://www.linkedin.com/in/rafikpasha-shaik-59b080190" target="_blank">here</a>. This
+              profile includes details about my work history, educational background, and recommendations from
+              colleagues and clients.</p>
+          </div>
+        </div>
+
+        <div class="FAQ-ShowMore">
+          <button id="showMoreBtn">Show More</button>
+        </div>
+
+      </div>
+    </div>
+  </body>
+
+
+
+</html>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const items = document.querySelectorAll(".item");
+    const showMoreBtn = document.getElementById("showMoreBtn");
+    let showMore = false;
+
+    items.forEach((item, index) => {
+      item.querySelector(".FAQ-title").addEventListener("click", () => {
+        if (item.classList.contains("selected")) {
+          item.classList.remove("selected");
+          item.querySelector(".FAQ-content").classList.remove("show");
+        } else {
+          document.querySelectorAll(".item").forEach((el) => {
+            el.classList.remove("selected");
+            el.querySelector(".FAQ-content").classList.remove("show");
+          });
+          item.classList.add("selected");
+          item.querySelector(".FAQ-content").classList.add("show");
+        }
+      });
+    });
+
+    showMoreBtn.addEventListener("click", () => {
+      showMore = !showMore;
+      const itemsToShow = showMore ? items.length : 4;
+      document.querySelectorAll(".item").forEach((item, index) => {
+        item.style.display = index < itemsToShow ? "block" : "none";
+      });
+      showMoreBtn.textContent = showMore ? "Show Less" : "Show More";
+    });
+
+    document.querySelectorAll(".item").forEach((item, index) => {
+      item.style.display = index < 4 ? "block" : "none";
+    });
+  });
+
+</script>

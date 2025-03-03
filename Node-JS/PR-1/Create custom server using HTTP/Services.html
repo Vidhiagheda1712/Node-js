@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+</head>
+<style>
+    .nav_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #58634f;
+        color: #fff;
+        padding: 10px;
+    }
+
+    .nav_container ul {
+        width: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+        font-size: 20px;
+        justify-content: center;
+        list-style: none;
+    }
+
+    .nav_container li a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 600;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+
+    }
+
+    .nav_container ul li a:hover {
+        background: #fff;
+        color: #263a53e1;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    li h2 {
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        padding: 30px 0px;
+
+    }
+
+    .services {
+        padding: 3rem;
+        font-family: sans-serif;
+    }
+
+    .container {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr) [list-start] auto [list-end];
+        position: relative;
+        grid-template-rows: 4fr repeat(4, 1fr) 4fr;
+        gap: 1rem;
+    }
+
+    li {
+
+        grid-column: list;
+
+
+    }
+
+    .container li:first-child {
+        text-decoration: none;
+    }
+
+
+    li a {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        padding: 10px 20px;
+
+    }
+
+    img {
+        max-width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        transition: 0.5s;
+        border-radius: 20px;
+        max-height: 300px;
+        opacity: 0.75;
+    }
+
+    img:not(:hover, :focus) {
+        animation: z-index-fix 0.5s;
+    }
+
+    .container li img {
+        grid-row: 1/7;
+        grid-column: var(--column);
+        align-self: center;
+    }
+
+    li:has(:hover, :focus) a {
+        background: rgb(163, 187, 181);
+    }
+
+    li:has(:hover, :focus) img {
+        transform: scale(1.1);
+        max-height: 100%;
+        z-index: 2;
+        box-shadow: 50px 50px 50px 0px rgba(0, 0, 0, 0.2);
+        opacity: 1;
+    }
+
+    @keyframes z-index-fix {
+
+        0%,
+        100% {
+            z-index: 1;
+        }
+    }
+</style>
+
+<body>
+
+
+    <body bgcolor="#D6EAF8">
+        <div class="nav_container">
+            <div class="menu">
+                <ul>
+                    <li> <a href="/home">Home</a></li>
+                    <li> <a href="/about">About</a></li>
+                    <li> <a href="/pages">Pages</a></li>
+                    <li> <a href="/blog">Blog</a></li>
+                    <li> <a href="/contact">Contact</a></li>
+                    <li> <a href="/services">Services</a></li>
+                    <li> <a href="/shop">Shop</a></li>
+                    <li> <a href="/works">Works</a></li>
+                    <li> <a href="/faq">FAQ</a></li>
+                    <li> <a href="/news">News</a></li>
+
+
+
+                </ul>
+            </div>
+        </div>
+        <ul>
+            <li>
+                <h2>Our Services</h2>
+            </li>
+        </ul>
+        <div class='services'>
+            <ul class='container'>
+                <li>
+
+                </li>
+
+                <li style='--column: 1/2'><a>Design Services</a><img
+                        src='https://images.unsplash.com/photo-1717257554674-b6df91ba01f1?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjMwOTMyMzV8&ixlib=rb-4.0.3&q=85'>
+                </li>
+                <li style='--column: 2/3'><a>Copywriting Services</a><img
+                        src='https://images.unsplash.com/photo-1721189739138-f83066630f99?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjMwOTMyMzV8&ixlib=rb-4.0.3&q=85'>
+                </li>
+                <li style='--column: 3/4'><a>Management Services</a><img
+                        src='https://images.unsplash.com/photo-1721011564875-a2c115a8204e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjMwOTMyMzV8&ixlib=rb-4.0.3&q=85'>
+                </li>
+                <li style='--column: 4/5'><a>Development Services</a><img
+                        src='https://images.unsplash.com/photo-1720987517341-7fabea0055c7?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMjM4NDZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjMwOTMyMzV8&ixlib=rb-4.0.3&q=85'>
+                </li>
+            </ul>
+        </div>
+
+
+    </body>
+
+</body>
+
+</html>

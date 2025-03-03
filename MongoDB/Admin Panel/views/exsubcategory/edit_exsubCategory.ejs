@@ -1,0 +1,131 @@
+<%- include('../header') %>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title text-center"></h3>
+      </div>
+      <div class="row  d-flex justify-content-center align-items-center">
+        <div class="col-md-9">
+          <% if(locals.message?.success){ %>
+            <div class="alert alert-success">
+              <%= locals.message?.success %>
+            </div>
+            <% } %>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-9  stretch-card">
+          <div class="card" style="height:auto;">
+            <div class="card-body">
+              <h4 class="card-title " align="center"> Extra ExSubCategory</h4>
+              <form class="forms-sample" method="post" action="/exsubcategory/insertexsubcategory">
+                <input type="hidden" name="editid" value="<%= single?.id %>">
+                <div class="form-group">
+                  <label for="fname" class="text-right control-label col-form-label">
+                    Category</label>
+                  <div>
+                    <select name="category" class="form-control" id="category" onchange="categoryChange()">
+                      <option>---select category---</option>
+                      <% category.map((val)=>{ %>
+                        <option <% if(val?.category==single?.categoryId?.category){ %>
+                          selected
+                          <% } %> value="<%= val?.id %>">
+                              <%= val?.category %>
+
+                        </option>
+                        <% }) %>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="fname" class=" text-right control-label col-form-label">
+                    SubCategory</label>
+                  <div>
+                    <select name="subcategory" class="form-control" id="subcategory">
+                      <option>---select subcategory---</option>
+
+
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputUsername1">ExsubCategory Name</label>
+                  <input type="text" class="form-control" id="exampleInputUsername1" name="exsubcategory"
+                    placeholder="Extra SubCategory Name" value="<%= single?.exsubcategory %>">
+                </div>
+                <button type="submit" class="btn btn-primary mr-3">Submit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial:../../partials/_footer.html -->
+    <footer class="footer">
+      <div class="d-sm-flex justify-content-center justify-content-sm-between">
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
+          2020</span>
+        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
+            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a>
+          from Bootstrapdash.com</span>
+      </div>
+    </footer>
+    <!-- partial -->
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    const editSubcategory = () => {
+      let categoryid = `<%= single?.categoryId?.id %>`;
+      let subcategoryid = `<%= single?.subcategoryId?.id %>`;
+      
+      $.ajax({
+        method: 'GET',
+        url: `/exsubcategory/ajaxcategoryrecord?categoryid=${categoryid}`,
+        success: function (res) {
+          let subcategory = res.subcategory;
+          let category = res.category
+          console.log(category);
+          
+
+          //tbl start
+          let tbl = ""
+          tbl += `
+                        <option value="">---select subcategory---</option>`
+          category.map((val) => {
+            tbl += `
+                            <option ${val?._id == subcategoryid ? 'selected' : ''} value=${val?._id}>${val?.subcategory}</option>
+
+                            `
+          })
+          document.getElementById('subcategory').innerHTML = tbl;
+          //tbl end
+        }
+      })
+    }
+    editSubcategory();
+
+    const categoryChange = () => {
+      let catid = document.getElementById('category').value;
+      $.ajax({
+        method: 'GET',
+        url: `/exsubcategory/ajaxcategoryrecord?categoryid=${catid}`,
+        success: function (res) {
+          if (res.success) {
+            let tbl = "";
+            tbl += `<option value="">---select subcategory---</option>`
+            let category = res.category;
+            category.map((val) => {
+              tbl += `
+                    <option value=${val?._id}>${val?.subcategory}</option>
+              `
+            })
+            document.getElementById('subcategory').innerHTML = tbl;
+          }
+        }
+      })
+
+    }
+
+  </script>
+  <%- include('../footer') %>
