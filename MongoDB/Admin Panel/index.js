@@ -5,12 +5,15 @@ const app = express();
 
 app.set('view engine', 'ejs');
 const path = require('path');
+const fs = require('fs');
+
+
 const db = require('./config/db');
 const cookieparser = require('cookie-parser');
 app.use(cookieparser());
 app.use(express.urlencoded());
-app.use('/', express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/', express.static(path.join(__dirname, 'public')));
 
 // login system - passport start 
 

@@ -22,6 +22,7 @@ const addexsubCategoryPage = async (req, res) => {
 const insertexsubCategory = async (req, res) => {
     try {
         const { editid, category, subcategory, exsubcategory } = req.body;
+        
         if (editid) {
             await exsubcategoryModel.findByIdAndUpdate(editid, {
                 categoryId: category,

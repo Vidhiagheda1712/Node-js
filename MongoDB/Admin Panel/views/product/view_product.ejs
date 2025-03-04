@@ -2,115 +2,189 @@
   <div class="main-panel">
     <div class="content-wrapper">
       <div class="page-header">
-
-        <nav aria-label="breadcrumb">
-
-        </nav>
+        <nav aria-label="breadcrumb"></nav>
       </div>
-      <div class="row  d-flex justify-content-center align-items-center">
+      <h1>View Products</h1>
+
+      <!-- Success Message -->
+      <div class="row d-flex align-items-center">
         <div class="col-md-9">
-          <% if(locals.message?.success){ %>
-            <div class="alert alert-success">
+          <% if (locals.message?.success) { %>
+            <div class="alert alert-success text-center shadow-lg mb-4 rounded">
               <%= locals.message?.success %>
             </div>
             <% } %>
         </div>
       </div>
-      <div class="row d-flex justify-content-center">
-        <div class="col-lg-9 ">
-          <div class="card" style="height:auto;">
-            <div class="card-body">
-              <h4 class="card-title" style="text-align: center;">View Product</h4>
 
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Category Name</th>
-                      <th>SubCategory Name</th>
-                      <th>ExSubCategory Name</th>
-                      <th>Product Name</th>
-                      <th>Product Price</th>
-                      <th>Product Qty</th>
-                      <th>Image</th>
-                      <th>Actions</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% products.map((val,index)=>{ %>
-                      <tr style="margin: 20px 0px;">
-                        <td>
-                          <%= ++index %>
-                        </td>
-                        <td>
-                          <%= val?.categoryId?.category %>
-                        </td>
-                        <td>
-                          <%= val?.subcategoryId?.subcategory %>
-                        </td>
+      <!-- Product Cards -->
+      
+      <div class="row">
+        <% products.map((val, index)=> { %>
+          <div class="col-md-3 col-sm-6 col-xs-12 mb-4">
+            <div class="card product-card shadow-lg rounded-lg border-0 overflow-hidden">
+              <img class="card-img-top " src="/<%= val?.image %>" alt=""
+                style="height: 300px;; object-fit:contain; transition: transform 0.3s ease;">
+              <div class="card-body">
+                <h5 class="card-title text-left">
+                  <%= val?.productname %>
+                </h5>
+                <p class="card-text text-left">
+                <div class="val"><strong>Category:</strong>
+                  <%= val?.categoryId?.category %>
+                </div>
+              
+                <div class="val">
+                  <strong>SubCategory:</strong>
+                  <%= val?.subcategoryId?.subcategory %>
+                </div>
+                <div class="val">
+                  <strong>ExSubCategory:</strong>
+                  <%= val?.exsubcategoryId?.exsubcategory %>
+                </div>
+                <div class="val">
+                  <strong>Price:</strong> $<%= val?.productprice %>
+                </div>
+                <div class="val">
+                  <strong>Qty:</strong>
+                  <%= val?.productqty %>
+                </div>
+                </p>
 
-                        <td>
-                          <%= val?.exsubcategoryId?.exsubcategory %>
-                        </td>
-                        <td>
-                          <%= val?.productname %>
-                        </td>
-                        <td>
-                          <%= val?.productprice%>
-                        </td>
-                        <td>
-                          <%= val?.productqty %>
-                        </td>
-                        <td>
-                          <img src="<%= val?.image %>" width="50px" alt="">
-                        </td>
-                        <td>
-                          <a class="btn btn-danger btn-sm" href="/exsubcategory/deleteexsubcategory?id=<%= val?.id %>">
-                            Delete
-                          </a>
-                          <a class="btn btn-primary btn-sm" href="/exsubcategory/editexsubcategory?id=<%= val?.id %>">
-                            Edit
-                          </a>
-                        </td>
-                        <td>
-                          <% if(val?.status=='active' ){ %>
-                            <a class="btn btn-success btn-sm"
-                              href="/product/changestatus?id=<%= val?.id %>&status=active">
-                              <%= val?.status %>
-                            </a>
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-around mt-3">
+                  <td>
+                    <a class="btn btn-danger btn-sm action-btn" href="/product/deleteproduct?id=<%= val?.id %>">
+                      <i class="fas fa-trash-alt"></i> Delete
+                    </a>
+                  </td>
+                  <td>
+                    <a class="btn btn-primary btn-sm action-btn" href="/product/editproduct?id=<%= val?.id %>">
+                      <i class="fas fa-edit"></i> Edit
+                    </a>
+                  </td>
 
-                            <% } else{ %>
-                              <a class="btn btn-danger btn-sm"
-                                href="/product/changestatus?id=<%= val?.id %>&status=deactive">
-                                <%= val?.status %>
-                              </a>
-                              <% }%>
-                        </td>
-                      </tr>
-                      <% }) %>
-
-                  </tbody>
-                </table>
+                  <td>
+                    <% if (val?.status=='active' ) { %>
+                      <a class="btn btn-success" href="/product/changestatus?id=<%= val?.id %>&status=active">
+                        <%= val?.status %>
+                      </a>
+                      <% } else { %>
+                        <a class="btn btn-danger" href="/product/changestatus?id=<%= val?.id %>&status=deactive">
+                          <%= val?.status %>
+                        </a>
+                        <% } %>
+                  </td>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
+          <% }) %>
       </div>
     </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:../../partials/_footer.html -->
-    <footer class="footer">
-      <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-          2020</span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a
-            href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a>
-          from Bootstrapdash.com</span>
-      </div>
-    </footer>
-    <!-- partial -->
   </div>
+  <style>
+    /* Card hover effect */
+    h1 {
+      text-align: center;
+      margin: 25px 0px;
+    }
+
+    .card {
+      padding: 10px;
+      border-radius: 20px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+
+    /* Card image hover effect */
+
+    .card-img-top:hover {
+      transform: scale(1.05);
+    }
+
+    .card-img-top {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    }
+
+    .card-text {
+      font-size: 18px;
+    }
+
+    .card-title {
+      font-size: 30px;
+    }
+
+    .card .card-title {
+      color: rgb(197, 197, 197);
+     text-transform: capitalize;
+    }
+
+    /* Buttons hover effect */
+    .action-btn:hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+      transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    }
+
+    .val {
+      color: rgba(240, 248, 255, 0.83);
+      padding: 5px 0px;
+     
+    }
+
+    /* Success Message Styling */
+    .alert {
+      font-size: 1.1rem;
+      border-radius: 10px;
+      padding: 15px;
+    }
+
+    /* Button Styling */
+    .btn {
+      transition: background-color 0.3s, transform 0.2s ease-in-out;
+    }
+
+    /* Active and Deactive Buttons */
+    .btn-success,
+    .btn {
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.649);
+    }
+
+    .btn-success,
+    .btn-primary {
+      padding: 10px 20px;
+    }
+
+    .btn-danger:hover {
+      background-color: rgba(255, 0, 0, 0.637);
+      transform: scale(1.05);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: #007bff;
+      transform: scale(1.05);
+    }
+
+    .btn-success:hover {
+      background-color: #28a745;
+      transform: scale(1.05);
+    }
+
+    strong {
+      font-weight: 400;
+      color: rgba(240, 248, 255, 0.482);
+      letter-spacing: 0.07rem;
+    }
+  </style>
+
+
   <%- include('../footer') %>
