@@ -23,9 +23,9 @@ const addProductpage = async (req, res) => {
 }
 const insertProduct = async (req, res) => {
     try {
-        const { editid, category, subcategory, exsubcategory, name, price, qty } = req.body;
+        const { editid, category, subcategory, exsubcategory, name, price, quantity } = req.body;
         let single = await productModel.findById(editid);
-        fs.unlinkSync(single?.image)
+        fs.unlinkSync(single?.image);
         if (editid) {
             await productModel.findByIdAndUpdate(editid, {
                 categoryId: category,
@@ -33,7 +33,7 @@ const insertProduct = async (req, res) => {
                 exsubcategoryId: exsubcategory,
                 productname: name,
                 productprice: price,
-                productqty: qty,
+                productqty: quantity,
                 image:req?.file?.path
             })
             req.flash('success', 'Product successfully update');
