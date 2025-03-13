@@ -25,7 +25,6 @@ const insertProduct = async (req, res) => {
     try {
         const { editid, category, subcategory, exsubcategory, name, price, quantity } = req.body;
         let single = await productModel.findById(editid);
-        fs.unlinkSync(single?.image);
         if (editid) {
             await productModel.findByIdAndUpdate(editid, {
                 categoryId: category,
