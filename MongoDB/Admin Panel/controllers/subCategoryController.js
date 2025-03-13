@@ -3,7 +3,7 @@ const SubCategoryModel = require('../models/subCategoryModel');
 const addsubCategoryPage = async (req, res) => {
     try {
         let subcategory = await CategoryModel.find({ status: 'active' })
-        return res.render('subcategory/add_subcategory', {
+        return res.render('subcategory/add_subCategory', {
             category: subcategory
         })
     }
