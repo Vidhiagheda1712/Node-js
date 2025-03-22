@@ -1,0 +1,235 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog DETAILS</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background-image: url('../images/banner2.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        padding: 0 20px;
+    }
+
+    h2 {
+        font-size: 36px;
+        font-weight: 600;
+        text-align: center;
+        color: hsl(198.59deg 94.67% 55.88%);
+        margin-bottom: 20px;
+    }
+
+    .form-container {
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 20px;
+        padding: 2rem;
+        width: 100%;
+        max-width: 600px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-container:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    label {
+        font-size: 16px;
+        color: hsl(198.59deg 94.67% 55.88%);
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: 1px solid hsl(198.59deg 94.67% 55.88%);
+        background-color: rgba(0, 0, 0, 0.3);
+        color: #fff;
+        box-shadow: 0px 4px 6px rgba(255, 102, 0, 0.2);
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+        background-color: rgba(255, 102, 0, 0.1);
+        border-color: #995b32d5;
+        box-shadow: 0px 0px 10px rgba(255, 102, 0, 0.5);
+    }
+
+    .button {
+        background: linear-gradient(135deg, #707072, #121314);
+        border: none;
+        color: white;
+        padding: 15px;
+        font-size: 18px;
+        border-radius: 10px;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        box-shadow: 0px 4px 6px rgba(255, 102, 0, 0.2);
+    }
+
+    .button:hover {
+        opacity: 0.9;
+        transform: translateY(-5px);
+        background: linear-gradient(135deg, hsla(199, 95%, 56%, 0.6), hsl(198.59deg 94.67% 55.88%));
+        box-shadow: 0px 10px 15px rgba(255, 102, 0, 0.2);
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 15px 30px;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .navbar a {
+        color: #fff;
+        padding: 0 20px;
+        font-size: 18px;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+        color: hsl(198.59deg 94.67% 55.88%);
+    }
+
+    .logo-container h1 {
+        font-size: 28px;
+        font-weight: 700;
+        color: hsl(198.59deg 94.67% 55.88%);
+    }
+
+    .menu-container ul {
+        display: flex;
+        gap: 25px;
+        list-style: none;
+    }
+
+    .menu-list-item {
+        font-size: 16px;
+        color: #ccc;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .menu-list-item:hover {
+        color: hsl(198.59deg 94.67% 55.88%);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu-container ul {
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        h2 {
+            font-size: 30px;
+        }
+
+        .form-container {
+            padding: 1.5rem;
+            width: 90%;
+        }
+
+        .button-container a {
+            width: 100%;
+        }
+
+        .navbar a {
+            font-size: 18px;
+        }
+    }
+</style>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo-container">
+            <h1 class="logo">flakes</h1>
+        </div>
+        <div class="menu-container">
+            <ul class="menu-list">
+                <li class="menu-list-item active"> <a class="nav-link" href="/dash">Home</a> </li>
+                <li class="menu-list-item"> <a class="nav-link" href="/add">Add</a></li>
+                <li class="menu-list-item"> <a class="nav-link" href="/views">View</a> </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <h2>Add Product Details</h2>
+        <form action="/insert" enctype="multipart/form-data" method="post" class="orange-form">
+            <div class="input-container">
+                <div class="name-container">
+                    <label for="name">Title</label>
+                    <input type="text" id="name" name="name" placeholder="Enter product Name" required>
+                </div>
+                <div class="description-container">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" placeholder="Enter product Description" rows="4" required></textarea>
+                </div>
+                <div class="description-container">
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name="price" placeholder="Enter product price" required>
+                </div>
+                <div class="description-container">
+                    <label for="qty">Quantity</label>
+                    <input type="text" id="qty" name="qty" placeholder="Enter product Quantity" required>
+                </div>
+                <div class="image-container">
+                    <label for="image">Product Image</label>
+                    <input type="file" id="image" name="image" required>
+                </div>
+                <div class="button-container">
+                    <input type="submit" class="button" value="Add Product" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
