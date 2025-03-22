@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb://localhost/login-passport`);
+mongoose.connect(`mongodb://localhost/NodeExam2025`);
 const db = mongoose.connection;
 db.on("connected", (err) => {
     if (err) {
