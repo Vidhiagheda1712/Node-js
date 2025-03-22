@@ -1,6 +1,6 @@
 const express = require('express');
 const routes = express.Router();
-const { homePage, addPage, viewPage, addData, deleteData, editData, updateProduct } = require('../controllers/productcontroller');
+const { homePage, addPage, viewPage, addData, deleteData, editData, updateProduct ,cartProduct} = require('../controllers/productcontroller');
 
 const passport = require('passport');
 
@@ -25,6 +25,7 @@ routes.get('/', homePage)
 routes.get('/add',passport.checkUser, addPage)
 routes.get('/views',passport.checkUser, viewPage)
 routes.get('/deleteproduct', deleteData);
-routes.get('/editproduct', editData)
-routes.post('/update', imgupload, updateProduct)
+routes.get('/editproduct', editData);
+routes.get('/cartproduct', cartProduct);
+routes.post('/update', imgupload, updateProduct);
 module.exports = routes;
